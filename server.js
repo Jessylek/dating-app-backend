@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import Cors from "cors";
 import Cards from "./dbCards.js";
 //App Config
 const app = express();
@@ -8,6 +9,9 @@ const connection_url =
   "mongodb+srv://admin:Kokozaza24@cluster0.ztktq0p.mongodb.net/datingDB?retryWrites=true&w=majority&appName=Cluster0";
 //const mongoose = require("mongoose");
 //Middleware
+app.use(express.json());
+app.use(Cors());
+
 //DB Config
 mongoose.connect(connection_url, {
   useNewUrlParser: true,
@@ -38,3 +42,6 @@ app.get("/dating/cards", (req, res) => {
 });
 //Listener
 app.listen(port, () => console.log(`Listening on localhost: ${port}`));
+
+
+ 
